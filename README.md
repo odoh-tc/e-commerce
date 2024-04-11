@@ -52,6 +52,7 @@ Start the FastAPI server:
 
 
 Build the Docker image:
+
     docker build -t fastapi-app .
 
 Run the Docker container:
