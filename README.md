@@ -40,12 +40,14 @@ create and activate virtual environment using:
     pip install -r requirements.txt
 Set up the database:
 
-    Modify the database settings in .env file.
+    Modify the database settings in .env file
 
 Usage
 Start the FastAPI server:
+
     uvicorn main:app --reload
     Navigate to http://localhost:8000/docs in your browser to access the Swagger UI for testing the API endpoints.
+
 **Deploying with Docker**
 Build the Docker image:
     docker build -t fastapi-app .
