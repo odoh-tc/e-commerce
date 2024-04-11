@@ -28,8 +28,8 @@
 Installation
     Clone the repository:
 
-    git clone *repository-url*
-    cd *repository-directory*
+    git clone <repository-url>
+    cd <repository-directory>
 
 **Running Locally**
 Install dependencies:
@@ -49,10 +49,13 @@ Start the FastAPI server:
     Navigate to http://localhost:8000/docs in your browser to access the Swagger UI for testing the API endpoints.
 
 **Deploying with Docker**
+
+
 Build the Docker image:
     docker build -t fastapi-app .
 
 Run the Docker container:
+
     docker run -d -p 8000:8000 fastapi-app
 
     Navigate to http://localhost:8000/docs in your browser to access the Swagger UI for testing the API endpoints.
