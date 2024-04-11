@@ -9,17 +9,17 @@
     User authentication with JWT token generation.
     Role-based access control (customers and business owners).
     User profile retrieval and update.
-Business Management:
+**Business Management:**
 
     Business creation, update, and deletion by business owners.
     Retrieval of businesses owned by a specific user.
     Listing all products associated with a business.
-Product Management:
+**Product Management:**
 
     Product creation, update, and deletion by business owners.
     Retrieval of products associated with a business.
     Validation of product details and stock availability.
-Order Management:
+**Order Management:**
 
     Order creation by customers with validation against product availability.
     Retrieval of orders placed by a specific customer.
@@ -30,7 +30,12 @@ Installation
 
     git clone *repository-url*
     cd *repository-directory*
+
+**Running Locally**
 Install dependencies:
+
+create and activate virtual environment using:
+    python3.10 -m venv env && source env/bin/activate
 
     pip install -r requirements.txt
 Set up the database:
@@ -39,35 +44,15 @@ Set up the database:
 
 Usage
 Start the FastAPI server:
-
     uvicorn main:app --reload
     Navigate to http://localhost:8000/docs in your browser to access the Swagger UI for testing the API endpoints.
+**Deploying with Docker**
+Build the Docker image:
+    docker build -t fastapi-app .
 
-<!-- Technologies Used
-Programming Language: Python
+Run the Docker container:
+    docker run -d -p 8000:8000 fastapi-app
 
-Web Framework: FastAPI (version X.X.X)
+    Navigate to http://localhost:8000/docs in your browser to access the Swagger UI for testing the API endpoints.
 
-Database Management System: PostgreSQL (version X.X)
-
-ORM: SQLAlchemy
-
-Web Server: Uvicorn
-
-Authentication and Authorization: JSON Web Tokens (JWT)
-
-Dependency Management: Poetry
-
-Other Libraries and Tools:
-
-passlib
-dotenv
-Pydantic
-Deployment and Hosting:
-
-Docker
-Heroku
-Version Control:
-
-Git
-GitHub -->
+*Note: Ensure that Docker is installed on your machine before deploying with Docker.*
