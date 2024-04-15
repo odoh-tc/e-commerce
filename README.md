@@ -104,7 +104,7 @@ Run the Docker container:
 
     Navigate to http://localhost:8000/docs in your browser to access the Swagger UI for testing the API endpoints.
 
-*Note: Ensure that Docker is installed on your machine before deploying with Docker.*
+*Note: Ensure that Docker is installed on your machine before deploying with Docker and you ahve the .env file.*
 
 ---
 
