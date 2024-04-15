@@ -10,7 +10,7 @@ Before you begin, ensure you have met the following requirements:
 
 - SQLite3: SQLite3 is included with Python by default, so you don't need to install it separately. However, make sure you have a SQLite3 database file ready to use with your FastAPI application.
 
-- Python: Make sure you have Python installed on your machine. You can download it from python.org.
+- Python: Make sure you have Python installed on your machine. You can download it from [python.org](python.org).
   
 ---  
 
