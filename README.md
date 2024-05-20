@@ -11,8 +11,8 @@ Before you begin, ensure you have met the following requirements:
 - SQLite3: SQLite3 is included with Python by default, so you don't need to install it separately. However, make sure you have a SQLite3 database file ready to use with your FastAPI application.
 
 - Python: Make sure you have Python installed on your machine. You can download it from [python.org](https://www.python.org/).
-  
----  
+
+---
 
 ### Features
 
@@ -22,16 +22,19 @@ Before you begin, ensure you have met the following requirements:
     User authentication with JWT token generation.
     Role-based access control (customers and business owners).
     User profile retrieval and update.
+
 **Business Management:**
 
     Business creation, update, and deletion by business owners.
     Retrieval of businesses owned by a specific user.
     Listing all products associated with a business.
+
 **Product Management:**
 
     Product creation, update, and deletion by business owners.
     Retrieval of products associated with a business.
     Validation of product details and stock availability.
+
 **Order Management:**
 
     Order creation by customers with validation against product availability.
@@ -39,7 +42,7 @@ Before you begin, ensure you have met the following requirements:
     Update and deletion of orders by customers and business owners.
 
 Installation
-    Clone the repository:
+Clone the repository:
 
     git clone <repository-url>
     cd <repository-directory>
@@ -47,10 +50,11 @@ Installation
 ---
 
 ### Running Locally
+
 Install dependencies:
 
 create and activate virtual environment using:
-    python3.10 -m venv env && source env/bin/activate
+python3.10 -m venv env && source env/bin/activate
 
     pip install -r requirements.txt
 
@@ -85,6 +89,7 @@ print("Generated Secret Key:", secret_key)
 ---
 
 ##### Usage
+
 Start the FastAPI server:
 
     uvicorn main:app --reload
@@ -92,7 +97,6 @@ Start the FastAPI server:
     Navigate to http://localhost:8000/docs in your browser to access the Swagger UI for testing the API endpoints.
 
 **Deploying with Docker**
-
 
 Build the Docker image:
 
@@ -104,7 +108,7 @@ Run the Docker container:
 
     Navigate to http://localhost:8000/docs in your browser to access the Swagger UI for testing the API endpoints.
 
-*Note: Ensure that Docker is installed on your machine before deploying with Docker and you have the .env file.*
+_Note: Ensure that Docker is installed on your machine before deploying with Docker and you have the .env file._
 
 ---
 
@@ -127,3 +131,9 @@ Contributions are welcome! If you'd like to contribute to this project, please f
 This project is licensed under the MIT License - see the [LICENSE](https://github.com/odoh-tc/repo/blob/main/LICENSE) file for details.
 
 ---
+
+<!--
+
+
+E-commerce Application with FastAPI
+A robust e-commerce backend application built with FastAPI. This app features role-based access control, allowing business owners to create and manage multiple businesses, each with its own products, while customers can place and manage orders. Additionally, an admin role is included to perform various administrative operations. -->

@@ -1,7 +1,7 @@
 from fastapi import FastAPI, status
 from fastapi.staticfiles import StaticFiles
 from logger import logger
-from middleware import ecommerce_middleware
+# from middleware import ecommerce_middleware
 from starlette.middleware.base import BaseHTTPMiddleware
 from fastapi.middleware.cors import CORSMiddleware
 from database import engine
@@ -14,8 +14,11 @@ from routers.order import order_router
 from routers.admin import admin_router
 
 
-app = FastAPI()
-
+app = FastAPI(
+    title="E-commerce Application",
+    description="A robust e-commerce backend application built with FastAPI. This app features role-based access control, allowing business owners to create and manage multiple businesses, each with its own products, while customers can place and manage orders. Additionally, an admin role is included to perform various administrative operations.",
+    version="1.0.0"
+)
 app.include_router(user_router)
 app.include_router(auth_router)
 app.include_router(admin_router)
@@ -28,7 +31,7 @@ app.include_router(order_router)
 
 
 logger.info("starting app")
-app.add_middleware(BaseHTTPMiddleware, dispatch=ecommerce_middleware)
+# app.add_middleware(BaseHTTPMiddleware, dispatch=ecommerce_middleware)
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 models.Base.metadata.create_all(bind=engine)

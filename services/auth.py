@@ -1,32 +1,33 @@
 from fastapi import Depends, HTTPException, status
 from passlib.context import CryptContext
-from typing import List
+from sqlalchemy.orm import Session
+from typing import Annotated, List
 from dotenv import dotenv_values
 import smtplib, ssl
 from models import User
 import jwt
-from database import session
+from database import get_db
 import models
 from logger import logger
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 
 
-
+db_dependency = Annotated[Session, Depends(get_db)]
 pwd_context = CryptContext(schemes=['bcrypt'], deprecated="auto")
 config_credentials = dotenv_values(".env")
 
 oath2_scheme = OAuth2PasswordBearer(tokenUrl='/auth/token')
 
 
-async def authenticate_user(username, password):
-    user = session.query(User).filter(User.username == username).first()
+async def authenticate_user(db: db_dependency, username, password):
+    user = db.query(User).filter(User.username == username).first()
     if user and verify_password(password, user.password):
         return user
     return False
 
 
-async def token_generator(username: str, password: str):
-    user = await authenticate_user(username, password)
+async def token_generator(db: db_dependency, username: str, password: str):
+    user = await authenticate_user(db, username, password)
 
     if not user:
         raise HTTPException(
@@ -44,10 +45,10 @@ async def token_generator(username: str, password: str):
     return token
 
 
-async def get_current_user(token: str = Depends(oath2_scheme)):
+async def get_current_user(db: db_dependency, token: str = Depends(oath2_scheme)):
     try:
         payload = jwt.decode(token, config_credentials['SECRET'], algorithms=['HS256'])
-        user = session.query(User).filter(User.id == payload.get("id")).first()
+        user = db.query(User).filter(User.id == payload.get("id")).first()
 
         if user is None:
             raise HTTPException(
@@ -80,11 +81,11 @@ def verify_password(plain_password, hashed_password):
     return pwd_context.verify(plain_password, hashed_password)
 
 
-async def very_token(token: str):
+async def very_token(db: db_dependency, token: str):
     try:
         payload = jwt.decode(token, config_credentials["SECRET"],
                             algorithms=['HS256'])
-        user = session.query(models.User).filter(models.User.id == payload.get("id")).first()
+        user = db.query(models.User).filter(models.User.id == payload.get("id")).first()
 
     except:
         raise HTTPException(

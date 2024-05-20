@@ -28,7 +28,7 @@ class Business(Base):
     __tablename__ = 'businesses'
 
     id = Column(Integer, primary_key=True, index=True)
-    business_name = Column(String(100), nullable=False, unique=True)
+    business_name = Column(String(200), nullable=False, unique=True)
     city = Column(String(100), nullable=False, default="Unspecified")
     region = Column(String(100), nullable=False, default="Unspecified")
     business_description = Column(String, nullable=True)
@@ -60,7 +60,7 @@ class Product(Base):
     def serialize(self):
 
         return {
-            "id": self.id,
+            "product_id": self.id,
             "name": self.name,
             "category": self.category,
             "new_price": float(self.new_price),

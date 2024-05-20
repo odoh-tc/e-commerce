@@ -1,13 +1,5 @@
 FROM python:3.9-alpine
 
-ARG EMAIL
-ARG PASS
-ARG SECRET
-
-ENV EMAIL=$EMAIL
-ENV PASS=$PASS
-ENV SECRET=$SECRET
-
 WORKDIR /app
 
 COPY requirements.txt /app/
