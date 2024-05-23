@@ -6,11 +6,11 @@ This FastAPI application provides a robust backend solution for managing users, 
 
 ### Prerequisites:
 
-Before you begin, ensure you have met the following requirements:
+Before you start, make sure you have the following prerequisites:
 
-- SQLite3: SQLite3 is included with Python by default, so you don't need to install it separately. However, make sure you have a SQLite3 database file ready to use with your FastAPI application.
+- **PostgreSQL:** Install PostgreSQL on your machine. You can download and install it from the [official PostgreSQL website](https://www.postgresql.org/download/).
 
-- Python: Make sure you have Python installed on your machine. You can download it from [python.org](https://www.python.org/).
+- **Python:** Ensure you have Python installed on your machine. You can download it from [python.org](https://www.python.org/).
 
 ---
 

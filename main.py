@@ -16,7 +16,7 @@ from routers.admin import admin_router
 
 app = FastAPI(
     title="E-commerce Application",
-    description="A robust e-commerce backend application built with FastAPI. This app features role-based access control, allowing business owners to create and manage multiple businesses, each with its own products, while customers can place and manage orders. Additionally, an admin role is included to perform various administrative operations.",
+    description="A robust e-commerce backend application. This app features role-based access control, allowing business owners to create and manage multiple businesses, each with its own products, while customers can place and manage orders. Additionally, an admin role is included to perform various administrative operations.",
     version="1.0.0"
 )
 app.include_router(user_router)
