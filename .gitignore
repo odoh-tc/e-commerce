@@ -3,3 +3,5 @@
 /practice
 
 .env
+.env.test
+/test

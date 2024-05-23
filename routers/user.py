@@ -102,6 +102,9 @@ async def user_login(
     Raises:
     - HTTPException with status code 401 and "Unauthorized, please login" detail if the user is not authenticated.
     """
+    if user is None:
+        raise HTTPException(status_code=401, detail="Unauthorized, please login")
+
     if user.role == UserRole.BUSINESS_OWNER:
         # Calculate the offset for businesses
         business_offset = (business_page - 1) * business_page_size
@@ -138,7 +141,7 @@ async def user_login(
             "username": user.username,
             "email": user.email,
             "verified": user.is_verified,
-            "joined_date": user.join_date.strftime("%b %d %Y %H:%M:%S"),
+            "joined_date": user.join_date.strftime("%b %d %Y %H:%M:%S") if user.join_date else None,
         }
 
         return {
@@ -161,7 +164,7 @@ async def user_login(
             "username": user.username,
             "email": user.email,
             "verified": user.is_verified,
-            "joined_date": user.join_date.strftime("%b %d %Y %H:%M:%S"),
+            "joined_date": user.join_date.strftime("%b %d %Y %H:%M:%S") if user.join_date else None,
         }
 
         if orders:
@@ -181,6 +184,7 @@ async def user_login(
                     "orders": []
                 }
             }
+
 
 
 
