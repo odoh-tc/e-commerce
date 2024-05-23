@@ -3,7 +3,7 @@ from fastapi import APIRouter, Depends, HTTPException, Query, status
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session
 import models
-from services.auth import get_current_user, get_hash_password, send_email
+from services.auth import get_current_user, get_hash_password 
 from schema.user import UserIn, UserRole, UserUpdate
 from services.user import is_email_exists, is_username_exists
 from database import get_db
@@ -55,9 +55,6 @@ async def user_registration(db: db_dependency, user: UserIn):
         
         db.add(new_user)
         db.commit()
-
-        # Send email for verification
-        await send_email(user.email, new_user)
 
         return {
                 "status": "ok",

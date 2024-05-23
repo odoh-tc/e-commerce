@@ -42,32 +42,32 @@ async def generate_token(db: db_dependency, request_form: OAuth2PasswordRequestF
 
 
 
-@auth_router.get('/verification', response_class=HTMLResponse, status_code=status.HTTP_200_OK)
-async def email_verification(db: db_dependency, request: Request, token: str):
-    """
-    Verifies the user's email by setting the 'is_verified' attribute to True in the database.
+# @auth_router.get('/verification', response_class=HTMLResponse, status_code=status.HTTP_200_OK)
+# async def email_verification(db: db_dependency, request: Request, token: str):
+#     """
+#     Verifies the user's email by setting the 'is_verified' attribute to True in the database.
 
-    Args:
-    db (Session): The database session.
-    request (Request): The HTTP request object.
-    token (str): The token to be verified.
+#     Args:
+#     db (Session): The database session.
+#     request (Request): The HTTP request object.
+#     token (str): The token to be verified.
 
-    Returns:
-    dict: A dictionary containing the HTML response for the verification page.
+#     Returns:
+#     dict: A dictionary containing the HTML response for the verification page.
 
-    Raises:
-    HTTPException: If the token is invalid or expired.
+#     Raises:
+#     HTTPException: If the token is invalid or expired.
 
-    """
-    user = await very_token(db, token)
+#     """
+#     user = await very_token(db, token)
 
-    if user and not user.is_verified:
-        user.is_verified = True
-        db.commit()
-        return templates.TemplateResponse("verification.html", {"username": user.username, "request": request})
+#     if user and not user.is_verified:
+#         user.is_verified = True
+#         db.commit()
+#         return templates.TemplateResponse("verification.html", {"username": user.username, "request": request})
     
-    raise HTTPException(
-        status_code=status.HTTP_401_UNAUTHORIZED,
-        detail="Invalid token or expired token",
-        headers={"WWW-Authenticate": "Bearer"},
-    )
+#     raise HTTPException(
+#         status_code=status.HTTP_401_UNAUTHORIZED,
+#         detail="Invalid token or expired token",
+#         headers={"WWW-Authenticate": "Bearer"},
+#     )
