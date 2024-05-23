@@ -97,8 +97,8 @@ async def very_token(db: db_dependency, token: str):
 
 
 
-if "EMAIL" not in config_credentials or "PASS" not in config_credentials:
-    raise ValueError("Email or password not found in .env file")
+# if "EMAIL" not in config_credentials or "PASS" not in config_credentials:
+#     raise ValueError("Email or password not found in .env file")
 
 
 SMTP_SERVER = "smtp.gmail.com"
